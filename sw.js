@@ -1,10 +1,10 @@
-const CACHE = 'consista-v6';
+const CACHE = 'consista-v6-v2';
 const ASSETS = [
-  '/consista-v6/',
-  '/consista-v6/index.html',
-  '/consista-v6/manifest.json',
-  '/consista-v6/icon-192.png',
-  '/consista-v6/icon-512.png'
+  './',
+  'index.html',
+  'manifest.json',
+  'icon-192.png',
+  'icon-512.png'
 ];
 
 self.addEventListener('install', e => {
@@ -17,9 +17,7 @@ self.addEventListener('install', e => {
 self.addEventListener('activate', e => {
   e.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(
-        keys.filter(k => k !== CACHE).map(k => caches.delete(k))
-      )
+      Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
     )
   );
   self.clients.claim();
